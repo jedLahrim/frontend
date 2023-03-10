@@ -27,4 +27,4 @@ workflows:
   build-and-deploy:
     jobs:
       - build:
-          context: docker-creds
+          context: .
