@@ -1,5 +1,4 @@
 version: 2.1
-
 jobs:
   build:
     docker:
@@ -9,7 +8,7 @@ jobs:
       - checkout
       - run:
           name: Install dependencies
-          command: npm install --frozen-lockfile
+          command: npm install
       - run:
           name: Run tests
           command: yarn test
@@ -22,9 +21,3 @@ jobs:
           name: test
           command: docker run jedla/frontend npm run test -- --coverage
 
-workflows:
-  version: 2
-  build-and-deploy:
-    jobs:
-      - build:
-          context: .
