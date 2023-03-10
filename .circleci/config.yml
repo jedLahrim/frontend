@@ -15,12 +15,6 @@ jobs:
     # You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
     # A list of available CircleCI Docker Convenience Images are available here: https://circleci.com/developer/images/image/cimg/node
     docker:
-      - run:
-          name: build image
-          command: docker build -t jedla/frontend -f Dockerfile.dev .
-      - run:
-          name: test app in docker container
-          command: docker run jedla/frontend npm run test -- --coverage
     # Then run your tests!
     # CircleCI will report the results back to your VCS provider.
     steps:
@@ -32,8 +26,14 @@ jobs:
           # If you are using yarn, change the line below from "npm" to "yarn"
           pkg-manager: npm
       - run:
+          name: build image
+          command: docker build -t jedla/frontend -f Dockerfile.dev .
+      - run:
           name: Run tests
           command: npm run test
+      - run:
+          name: test app in docker container
+          command: docker run jedla/frontend npm run test -- --coverage
 
 workflows:
   # Below is the definition of your workflow.
