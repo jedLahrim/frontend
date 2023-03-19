@@ -1,0 +1,9 @@
+steps:
+  - name: Build Docker image
+    run: docker build -t jedla/frontend -f Dockerfile.dev .
+  - name: Run Docker container
+    run: docker run jedla/frontend
+  - name: Run SonarCloud analysis
+    run: sonar-scanner
+  - name: test the app
+    run: docker run jedla/frontend npm run test -- --coverage
