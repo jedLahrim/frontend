@@ -1,18 +1,18 @@
-sudo: required
-services:
-  - docker
-
-before_install:
-  - docker build -t jedla/frontend -f Dockerfile.dev .
-
-script:
-  - docker run -e CI=true jedla/frontend npm run test -- --coverage
-
-
-deploy:
-    provider: elasticbeanstalk
-    region: "us-east-1"
-    app: "docker"
-    env: "Docker-env-1"
-    bucket name: "elasticbeanstalk-us-east-1-546597385901"
-    bucket_path: "docker"
+#sudo: required
+#services:
+#  - docker
+#
+#before_install:
+#  - docker build -t jedla/frontend -f Dockerfile.dev .
+#
+#script:
+#  - docker run -e CI=true jedla/frontend npm run test -- --coverage
+#
+#
+#deploy:
+#    provider: elasticbeanstalk
+#    region: "us-east-1"
+#    app: "docker"
+#    env: "Docker-env-1"
+#    bucket name: "elasticbeanstalk-us-east-1-546597385901"
+#    bucket_path: "docker"

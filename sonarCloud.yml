@@ -4,6 +4,6 @@ steps:
   - name: Run Docker container
     run: docker run jedla/frontend
   - name: test the app
-    run: docker run jedla/frontend npm run test -- --coverage
+    run: docker run -e SONAR_TOKEN=3b3c542381e0e0e397ebc8852a7566ec099ca8e6 jedla/frontend npm run test -- --coverage
   - name: Run SonarCloud analysis
     run: sonar-scanner
